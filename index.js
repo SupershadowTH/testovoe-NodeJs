@@ -1,6 +1,6 @@
 import { createUser, getClients, getClientsStatuses, loginUser } from "./api/index.js";
-import config from "./config.js";
 import sheetsmodule from "./modules/google_sheets.js"
+import 'dotenv/config'
 
 const login = (username) => {
   return new Promise(async (resolve, reject) => {
@@ -64,8 +64,8 @@ const getClientsData = async (token) => {
 };
 
 const main = async () => {
-  
-  const authData = await login(config.username);
+  console.log(`Имя пользователя: ${process.env.SERVER_USERNAME}`);
+  const authData = await login(`${process.env.SERVER_USERNAME}`);
   if (authData.auth) {
     console.log("Авторизирован");
     const clientData = await getClientsData(authData.token);

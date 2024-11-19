@@ -1,15 +1,15 @@
 import { GoogleSpreadsheet } from "google-spreadsheet";
 import { JWT } from "google-auth-library";
-import config from "../config.js";
+import 'dotenv/config'
 
 export default async (clients_data) => {
   const serviceAccountAuth = new JWT({
-    email: config.google_email,
-    key: config.google_key,
+    email: process.env.GOOGLE_EMAIL_LOGIN,
+    key: process.env.GOOGLE_KEY_LOGIN,
     scopes: ["https://www.googleapis.com/auth/spreadsheets"],
   });
 
-  const doc = new GoogleSpreadsheet(config.sheet_id, serviceAccountAuth);
+  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, serviceAccountAuth);
 
   await doc
     .loadInfo()
