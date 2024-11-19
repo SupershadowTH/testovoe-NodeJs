@@ -2,4 +2,4 @@ npm i
 
 node ./index.js
 
-Заполнить google_email, google_key и sheet_id  для подключения к документу
+Заполнить GOOGLE_EMAIL_LOGIN, GOOGLE_KEY_LOGIN и GOOGLE_SHEET_ID в файле переменных среды для подключения к документу
